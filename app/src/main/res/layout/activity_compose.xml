@@ -16,11 +16,12 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/ivTweetButton"
+        android:id="@+id/tweetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:onClick="onSubmit"
         android:text="Button" />
 
 </RelativeLayout>

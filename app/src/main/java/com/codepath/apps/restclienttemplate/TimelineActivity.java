@@ -1,10 +1,13 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -23,6 +26,19 @@ public class TimelineActivity extends AppCompatActivity {
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
+
+//    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.login, menu);
+        return true;
+    }
+
+    public void onComposeAction(MenuItem mi) {
+        // first parameter is the context, second is the class of the activity to launch
+        Intent i = new Intent(this, ComposeActivity.class);
+        startActivityForResult(i, 1); // brings up the second activity
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +70,13 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 //Log.d("TwitterClient", response.toString());
-                // iterate thorugh teh JSON array
+                // iterate through teh JSON array
                 // for each entry, deserialize the JSON object
 
                 for (int i = 0; i < response.length(); i++){
                     // convert each object to a Tweet model
                     // add that Tweet model to our data source
-                    // notidy the adapter that we've added an item
+                    // notify the adapter that we've added an item
                     try {
                         Tweet tweet = Tweet.fromJSON(response.getJSONObject(i));
                         tweets.add(tweet);

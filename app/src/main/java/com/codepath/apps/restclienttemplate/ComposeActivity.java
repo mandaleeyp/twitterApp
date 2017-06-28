@@ -3,9 +3,12 @@ package com.codepath.apps.restclienttemplate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -15,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
+
 
 public class ComposeActivity extends AppCompatActivity {
 
@@ -32,7 +36,25 @@ public class ComposeActivity extends AppCompatActivity {
         tvCompose = (EditText) findViewById(R.id.tvCompose);
         tweet = tvCompose.getText().toString();
 
+        mTextView = (TextView) findViewById(R.id.tvCounter);
+        tvCompose.addTextChangedListener(tvCounter);
+
     }
+
+    private TextView mTextView;
+
+    private final TextWatcher tvCounter = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            //This sets a textview to the current length
+            mTextView.setText(String.valueOf(140-s.length()));
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
 
     public void onSubmit(View v) {
 
@@ -83,5 +105,8 @@ public class ComposeActivity extends AppCompatActivity {
 
         this.finish();
         }
-    }
+
+
+
+}
 

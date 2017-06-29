@@ -44,6 +44,13 @@ public class TimelineActivity extends AppCompatActivity {
         startActivityForResult(i, 1); // brings up the second activity
     }
 
+    public void onReplyAction(MenuItem mi) {
+        // first parameter is the context, second is the class of the activity to launch
+        Intent i = new Intent(this, ReplyActivity.class);
+        startActivityForResult(i, 1); // brings up the second activity
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

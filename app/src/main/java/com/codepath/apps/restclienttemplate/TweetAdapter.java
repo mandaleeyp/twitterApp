@@ -1,11 +1,13 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,6 +58,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.tvCreatedAt.setText(" • " + getRelativeTimeAgo(tweet.createdAt));
 
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
+
     }
 
     @Override
@@ -65,12 +68,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     // create ViewHolder class
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivProfileImage;
         public TextView tvUsername;
         public TextView tvScreenName;
         public TextView tvBody;
         public TextView tvCreatedAt;
+        public ImageButton replyButton;
 
         public ViewHolder (View itemView) {
             super(itemView);
@@ -82,8 +86,21 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
             tvScreenName = (TextView) itemView.findViewById(R.id.tvScreenName);
             tvCreatedAt = (TextView) itemView.findViewById(R.id.tvCreatedAt);
+            replyButton = (ImageButton) itemView.findViewById(R.id.replyButton);
+
+
+            replyButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    Intent i = new Intent(context, ReplyActivity.class);
+                    i.putExtra("tweet", mTweets.get(pos));
+                    context.startActivity(i);
+                }
+            });
         }
     }
+
 
     public String getRelativeTimeAgo(String rawJsonDate) {
         String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";

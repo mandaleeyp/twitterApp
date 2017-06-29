@@ -50,12 +50,13 @@
         android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/replyButton"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignStart="@+id/tvBody"
         android:layout_below="@+id/tvBody"
         android:background="@android:color/white"
+        android:onClick="onReplyAction"
         android:paddingLeft="5dp"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/reply_button" />

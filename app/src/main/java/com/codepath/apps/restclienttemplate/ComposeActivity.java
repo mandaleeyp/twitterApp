@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -25,8 +26,9 @@ public class ComposeActivity extends AppCompatActivity {
     EditText tvCompose;
     TwitterClient client;
     private final int REQUEST_CODE = 20;
-
     String tweet;
+//    Tweet myTweet;
+    ImageView ivProfileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,19 @@ public class ComposeActivity extends AppCompatActivity {
         client = TwitterApp.getRestClient();
         tvCompose = (EditText) findViewById(R.id.tvCompose);
         tweet = tvCompose.getText().toString();
-
+        ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
         mTextView = (TextView) findViewById(R.id.tvCounter);
         tvCompose.addTextChangedListener(tvCounter);
+
+//        myTweet = getIntent().getParcelableArrayExtra("tweet");
+
+//        int radius = 8;
+//        int margin = 3;
+//
+//        Glide.with(this)
+//                .load(myTweet.user.profileImageUrl)
+//                .bitmapTransform(new RoundedCornersTransformation(this, radius, margin))
+//                .into(ivProfileImage);
 
     }
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +19,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by mandaleeyp on 6/26/17.
@@ -57,7 +60,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.tvScreenName.setText('@' + tweet.user.screenName);
         holder.tvCreatedAt.setText(" • " + getRelativeTimeAgo(tweet.createdAt));
 
-        Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
+        int radius = 8;
+        int margin = 3;
+
+        Glide.with(context)
+                .load(tweet.user.profileImageUrl)
+                .bitmapTransform(new RoundedCornersTransformation(context, radius, margin))
+                .into(holder.ivProfileImage);
 
     }
 
@@ -75,6 +84,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         public TextView tvBody;
         public TextView tvCreatedAt;
         public ImageButton replyButton;
+        public RelativeLayout relative_layout;
 
         public ViewHolder (View itemView) {
             super(itemView);
@@ -87,6 +97,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tvScreenName = (TextView) itemView.findViewById(R.id.tvScreenName);
             tvCreatedAt = (TextView) itemView.findViewById(R.id.tvCreatedAt);
             replyButton = (ImageButton) itemView.findViewById(R.id.replyButton);
+            relative_layout = (RelativeLayout) itemView.findViewById(R.id.relative_layout);
 
 
             replyButton.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +105,16 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
                 public void onClick(View v) {
                     int pos = getAdapterPosition();
                     Intent i = new Intent(context, ReplyActivity.class);
+                    i.putExtra("tweet", mTweets.get(pos));
+                    context.startActivity(i);
+                }
+            });
+
+            relative_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("tweet", mTweets.get(pos));
                     context.startActivity(i);
                 }

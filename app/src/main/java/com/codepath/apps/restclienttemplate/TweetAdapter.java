@@ -30,13 +30,19 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     private List<Tweet> mTweets;
     Context context;
+    private TweetAdapterListener mListener;
+
+    public interface TweetAdapterListener {
+        public void onItemSelected(View view, int position);
+    }
 
     // pass in the Tweets array into the constructor
-    public TweetAdapter(List<Tweet> tweets) {
+    public TweetAdapter(List<Tweet> tweets, TweetAdapterListener listener) {
         mTweets = tweets;
+        mListener = listener;
     }
-    // for each row, inflate the layout and cache references into ViewHolder
 
+    // for each row, inflate the layout and cache references into ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
@@ -90,7 +96,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             super(itemView);
 
             // perform findViewById lookups
-
             ivProfileImage = (ImageView) itemView.findViewById(R.id.ivProfileImage);
             tvUsername = (TextView) itemView.findViewById(R.id.tvUserName);
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
@@ -117,6 +122,30 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
                     Intent i = new Intent(context, DetailActivity.class);
                     i.putExtra("tweet", mTweets.get(pos));
                     context.startActivity(i);
+                }
+            });
+
+            ivProfileImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    Intent i = new Intent(context, ProfileActivity.class);
+                    i.putExtra("tweet", mTweets.get(pos));
+                    i.putExtra("userProfile", false);
+                    context.startActivity(i);
+                }
+            });
+
+            // handle row click event
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null) {
+                        // get the position of row element
+                        int position = getAdapterPosition();
+                        // fire the listener callback
+                        mListener.onItemSelected(view, position);
+                    }
                 }
             });
         }

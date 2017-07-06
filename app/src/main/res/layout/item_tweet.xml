@@ -65,4 +65,23 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/reply_button" />
 
+    <ImageButton
+        android:id="@+id/retweetButton"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_toEndOf="@+id/replyButton"
+        android:background="@android:color/white"
+        android:visibility="visible"
+        app:srcCompat="@drawable/ic_retweet" />
+
+
+    <ImageButton
+        android:id="@+id/favButton"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_toEndOf="@+id/retweetButton"
+        app:srcCompat="@drawable/iv_fav" />
+
 </RelativeLayout>

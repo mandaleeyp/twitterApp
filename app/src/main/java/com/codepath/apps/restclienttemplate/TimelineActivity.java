@@ -7,13 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.codepath.apps.restclienttemplate.fragments.TweetsListFragment;
 import com.codepath.apps.restclienttemplate.fragments.TweetsPagerAdapter;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
-public class TimelineActivity extends AppCompatActivity implements TweetsListFragment.TweetSelecterListener {
+public class TimelineActivity extends AppCompatActivity  {
+
+//     implements TweetsListFragment.TweetSelecterListener
 
     private final int REQUEST_CODE = 20;
     //private SwipeRefreshLayout swipeContainer;
@@ -120,17 +120,17 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
 //        });
 //    }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        // REQUEST_CODE is defined above
-//        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-//            // Extract name value from result extras
-//            Tweet tweet = data.getParcelableExtra("tweet");
-////            tweets.add(0, tweet);
-////            tweetAdapter.notifyItemInserted(0);
-////            rvTweets.scrollToPosition(0);
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            // Extract name value from result extras
+            Tweet tweet = data.getParcelableExtra("tweet");
+//            tweets.add(0, tweet);
+//            tweetAdapter.notifyItemInserted(0);
+//            rvTweets.scrollToPosition(0);
+        }
+    }
 
     public void onProfileView(MenuItem item) {
         // launch the profile view
@@ -139,9 +139,8 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
         startActivity(i);
     }
 
-    @Override
-    public void onTweetSelected(Tweet tweet) {
-        Toast.makeText(this, tweet.body, Toast.LENGTH_SHORT).show();
-
-    }
+//    @Override
+//    public void onTweetSelected(Tweet tweet) {
+//        Toast.makeText(this, tweet.body, Toast.LENGTH_SHORT).show();
+//    }
 }

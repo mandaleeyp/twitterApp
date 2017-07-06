@@ -10,39 +10,46 @@
         android:id="@+id/ivProfileImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
-        app:srcCompat="@android:color/black" />
+        app:srcCompat="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/tweetButton" />
 
     <EditText
         android:id="@+id/tvCompose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType = "textMultiLine"
+        android:layout_below="@+id/ivProfileImage"
+        android:hint="What's happening?"
+        android:paddingLeft="10dp"
+        android:inputType="textAutoComplete|textMultiLine"
         android:maxLength="140"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
-        android:layout_below="@+id/ivProfileImage"
-        android:layout_alignParentStart="true" />
+        android:layout_alignEnd="@+id/ivProfileImage" />
 
     <Button
         android:id="@+id/tweetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onSubmit"
+        android:backgroundTint="#1DA1F2"
+        android:textColor="#FFF"
+        android:text="TWEET"
+        android:layout_marginEnd="13dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:onClick="onSubmit"
-        android:text="Button" />
+        android:layout_marginBottom="15dp" />
 
     <TextView
         android:id="@+id/tvCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
+        android:paddingTop="12dp"
+        android:paddingRight="15dp"
         android:text="140"
         android:layout_below="@+id/tvCompose"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

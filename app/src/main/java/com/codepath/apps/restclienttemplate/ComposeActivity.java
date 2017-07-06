@@ -27,7 +27,7 @@ public class ComposeActivity extends AppCompatActivity {
     TwitterClient client;
     private final int REQUEST_CODE = 20;
     String tweet;
-//    Tweet myTweet;
+    Tweet myTweet;
     ImageView ivProfileImage;
 
     @Override
@@ -41,8 +41,8 @@ public class ComposeActivity extends AppCompatActivity {
         mTextView = (TextView) findViewById(R.id.tvCounter);
         tvCompose.addTextChangedListener(tvCounter);
 
-//        myTweet = getIntent().getParcelableArrayExtra("tweet");
-
+//        myTweet = getIntent().getParcelableArrayExtra("myTweet");
+//
 //        int radius = 8;
 //        int margin = 3;
 //

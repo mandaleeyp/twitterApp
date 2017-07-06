@@ -26,27 +26,10 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        // have a bool
         boolean userProfile = getIntent().getExtras().getBoolean("userProfile");
 
-//        String screenName = getIntent().getStringExtra("screen_name");
-//        // create the user fragment
-//        UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(screenName);
-//        // display the user timeline fragment inside the container (dynamically)
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//
-//        // make change
-//        ft.replace(R.id.flContainer, userTimelineFragment);
-//        // commit
-//        ft.commit();
-//
-//        Tweet tweet;
-
         client = TwitterApp.getRestClient();
-
-        // if else
-        if (userProfile == true) {
+        if (userProfile) {
 
             String screenName = getIntent().getStringExtra("screen_name");
             // create the user fragment
@@ -83,7 +66,6 @@ public class ProfileActivity extends AppCompatActivity {
             Long uid = tweet.uid;
             final String name = tweet.user.screenName;
 
-            String screenName = getIntent().getStringExtra("screen_name");
             // create the user fragment
             UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(name);
             // display the user timeline fragment inside the container (dynamically)

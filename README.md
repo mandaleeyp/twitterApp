@@ -8,6 +8,7 @@ Time spent: **20** hours spent in total
 
 The following **required** functionality is completed:
 
+Week 1
 * [x]	User can **sign in to Twitter** using OAuth login
 * [x]	User can **view tweets from their home timeline**
 * [x] User is displayed the username, name, and body for each tweet
@@ -18,20 +19,39 @@ The following **required** functionality is completed:
 * [x] User is taken back to home timeline with **new tweet visible** in timeline
 * [x] Newly created tweet should be manually inserted into the timeline and not rely on a full refresh
 
+Week 2
+* [x] User can switch between Timeline and Mention views using tabs. (3 points)
+* [x] User can view their home timeline tweets.
+* [x] User can view the recent mentions of their username.
+* [x] User can compose tweets. See this conceptual guide for passing data into a timeline fragment.
+* [x] User can navigate to view their own profile (2 points)
+* [x] User can see picture, tagline, # of followers, # of following, and tweets on their profile.
+* [x] The users/verify_credentials endpoint can be used to access this information.
+* [x] User can click on the profile image in any tweet to see another user's profile. (3 points)
+* [x] User can see picture, tagline, # of followers, # of following, and tweets of clicked user.
+* [x] Profile view should include that user's timeline
+* [x] The users/show endpoint can be used to access this information.
+
 The following **optional** features are implemented:
 
+Week 1
 * [x] User can **see a counter with total number of characters left for tweet** on compose tweet page
 * [x] User can **pull down to refresh tweets timeline**
 * [x] User is using **"Twitter branded" colors and styles**
 * [ ] User sees an **indeterminate progress indicator** when any background or network task is happening
-* [x] User can **select "reply" from detail view to respond to a tweet**
+* [ ] User can **select "reply" from detail view to respond to a tweet**
 * [x] User that wrote the original tweet is **automatically "@" replied in compose**
 * [x] User can tap a tweet to **open a detailed tweet view**
 * [x] User can **take favorite (and unfavorite) or reweet** actions on a tweet
 * [ ] User can **see embedded image media within a tweet** on list or detail view.
 
+Week 2
+* [x] User can "reply" to any tweet from their home timeline (1 point)
+* [x] User can search for tweets matching a particular query and see results. (1 point)
+
 The following **bonus** features are implemented:
 
+Week 1
 * [ ] User can view more tweets as they scroll with infinite pagination
 * [ ] Compose tweet functionality is build using modal overlay
 * [X] Use Parcelable instead of Serializable using the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler).
@@ -42,6 +62,14 @@ The following **bonus** features are implemented:
 * [ ] Use the popular ButterKnife annotation library to reduce view boilerplate.
 * [ ] On the Twitter timeline, leverage the [CoordinatorLayout](http://guides.codepath.com/android/Handling-Scrolls-with-CoordinatorLayout#responding-to-scroll-events) to apply scrolling behavior that [hides / shows the toolbar](http://guides.codepath.com/android/Using-the-App-ToolBar#reacting-to-scroll).
 * [ ] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in offline mode.
+
+Week 2
+* [ ] Compose activity is replaced with a modal overlay (2 points)
+* [x] Links in tweets are clickable and will launch the web browser (see autolink) (1 point)
+* [x] User can view following / followers list through any profile they view. (2 points)
+* [ ] Apply the popular ButterKnife annotation library to reduce view boilerplate. (1 point)
+* [ ] Experiment with fancy scrolling effects on the Twitter profile view. (2 points)
+* [ ] User can open the twitter app offline and see last loaded tweets persisted into sqlite (2 points)
 
 
 The following **additional** features are implemented:
